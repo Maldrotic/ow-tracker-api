@@ -1,0 +1,25 @@
+version: "2"
+services:
+  app:
+    container_name: ow-tracker-api
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+    links:
+      - mysql:dbserver
+    volumes:
+      - ./app:/app
+    ports:
+      - 5000:5000
+    env_file:
+      - dev.env
+  mysql:
+    image: mysql:8
+    restart: always
+    ports:
+      - 3306:3306
+    env_file:
+      - dev.env
+
