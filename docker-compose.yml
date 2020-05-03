@@ -10,7 +10,7 @@ services:
     links:
       - mysql:dbserver
     volumes:
-      - ./app:/app
+      - ./app:/home/ow_tracker_api/app
     ports:
       - 5000:5000
     env_file:

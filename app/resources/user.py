@@ -1,12 +1,13 @@
 from flask_restful import Resource
 
-from models.user import User as UserModel
+from app.models.user import User as UserModel
 
 
 class User(Resource):
 
     def get(self):
-        UserModel.query
+        user = UserModel.query.get(1)
+        return print(user)
 
     def post(self):
         pass

@@ -4,16 +4,16 @@ ENV FLASK_APP ow_tracker_api.py
 ENV FLASK_CONFIG development
 ENV PYTHONPATH /home/ow_tracker_api
 
-WORKDIR /home/ow_tracker_api
+WORKDIR /home/ow_tracker_api/app
 
 COPY app/requirements.txt requirements.txt
 
 RUN apt-get update
 RUN pip install -r requirements.txt
 
-COPY app /home/ow_tracker_api
+COPY app /home/ow_tracker_api/app
 COPY entrypoint.sh entrypoint.sh
 
 EXPOSE 5000
-ENTRYPOINT ["./entrypoint.sh"]
-#CMD flask run
+#ENTRYPOINT ["./entrypoint.sh"]
+CMD flask run --host 0.0.0.0
